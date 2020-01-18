@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>leetcode腾讯精选练习之旋转链表（四）</title>
+      <link href="/2020/01/16/leetcode-4/"/>
+      <url>/2020/01/16/leetcode-4/</url>
+      
+        <content type="html"><![CDATA[<h2 id="旋转链表"><a href="#旋转链表" class="headerlink" title="旋转链表"></a>旋转链表</h2><h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>给定一个链表，旋转链表，将链表每个节点向右移动 k 个位置，其中 k 是非负数。<br>示例 1:<br>输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, k = 2<br>输出: 4-&gt;5-&gt;1-&gt;2-&gt;3-&gt;NULL<br>解释:<br>    向右旋转 1 步: 5-&gt;1-&gt;2-&gt;3-&gt;4-&gt;NULL<br>    向右旋转 2 步: 4-&gt;5-&gt;1-&gt;2-&gt;3-&gt;NULL<br>示例 2:<br>输入: 0-&gt;1-&gt;2-&gt;NULL, k = 4<br>输出: 2-&gt;0-&gt;1-&gt;NULL<br>解释:<br>向右旋转 1 步: 2-&gt;0-&gt;1-&gt;NULL<br>向右旋转 2 步: 1-&gt;2-&gt;0-&gt;NULL<br>向右旋转 3 步: 0-&gt;1-&gt;2-&gt;NULL<br>向右旋转 4 步: 2-&gt;0-&gt;1-&gt;NULL  </p><h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><blockquote><p>再说这个题目的解题步骤之前先说说这个题目的理解，就是链表倒着数k个结点，然后断开k+1和k个结点之间的联接将其分成两个链表。然后将前后两个链表调换一下位置重新连接起来。（当然当k大于链表长度的时候需要取模运算）</p></blockquote><p><strong>1.计算链表的长度。<br>2.定义一个指针pPre指向头结点，移动k步。<br>3.定义一个指针pCur指向头结点，同时向前移动pPre和pCur指针直到pPre遍历完整个链表，此时pCur即为倒数第k个结点。<br>4.在第k个结点处断开链表，再将前后两个链表交换顺序后重新连接起来。</strong></p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>ListNode* rotateRight(ListNode* head, int k) {    if (head == NULL || head-&gt;next == NULL)    {        return head;    }    ListNode* pPre = head;    int count = 0;    while (pPre != NULL)    {        pPre = pPre-&gt;next;        count++;    }    ListNode* pCur = head;    pPre = head;    for (int i = 0; i &lt; k % count; i++)    {        pPre = pPre-&gt;next;    }    if (pPre != NULL)    {        while (pPre-&gt;next != NULL)        {            pPre = pPre-&gt;next;            pCur = pCur-&gt;next;        }        pPre-&gt;next = head;        head = pCur-&gt;next;        pCur-&gt;next = NULL;    }    return head;}</code></pre><p>改进版：  </p><pre><code>ListNode* rotateRight(ListNode* head, int k) {    if (head == NULL || k == 0)    {        return head;    }    int count = 1;    ListNode* p = head;    while (p-&gt;next)    {        count++;        p = p-&gt;next;    }    int left = count - k % count;    p-&gt;next = head;    for (int i = 0; i &lt; left; ++i)    {        p = p-&gt;next;    }    head = p-&gt;next;    p-&gt;next = NULL;    return head;}</code></pre><h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p><font color='red'>1.解题的关键是如何将题目转化为找到倒数第k个结点<br>2.另外一个巧妙的地方是循环向前移动两个指针的时候判断的是pPre-&gt;next是否为NULL，这样可以将pPre和pCur分别定位到断开链表后的的最后一个结点上，方便断开的链表进行联接。<br>3.改进版是我在网上看到别人的思路实现的。首先统计整个链表的长度，同时将一个指针指向链表的最后一个结点，然后将链表首尾联接起来，组成一个环，然后用数学的方法计算出正着数应该移动left步，然后将指向最后一个结点的指针移动left步，最后在这个位置将链表断开即得到结果。</font><br><strong><em>有时候思路真的就是一层窗户纸</em></strong><br><img src="https://img2018.cnblogs.com/blog/383281/202001/383281-20200116220710507-168975733.png" alt=""></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+            <tag> C++基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>leetcode腾讯精选练习之链表逆置（三）</title>
+      <link href="/2020/01/14/leetcode-3/"/>
+      <url>/2020/01/14/leetcode-3/</url>
+      
+        <content type="html"><![CDATA[<h2 id="反转单链表"><a href="#反转单链表" class="headerlink" title="反转单链表"></a>反转单链表</h2><h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>反转一个单链表。<br>示例:<br>输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL<br>输出: 5-&gt;4-&gt;3-&gt;2-&gt;1-&gt;NULL</p><h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p><strong>1.定义一个结点指针pCur指向当前链表,再定义一个指针pPre指向前一个结点,初始化为NULL。<br>2.循环遍历该链表，定义一个临时指针pNext指向当前链表的下一个结点,然后断开当前结点和下一个结点的指针关系，让当前结点的指针pCur的next指向pPre,即完成当前结点的反转。然后前移pPre指针和pCur指针，循环顺序执行该操作。<br>3.当临时指针pNext为NULL的时候说明pCur指针已经走到该链表的最后一个结点</strong></p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>ListNode* reverseList(ListNode* head) {    ListNode* pPre = NULL;    ListNode* pCur = head;    while (pCur != NULL)    {        ListNode* pNext = pCur-&gt;next;        pCur-&gt;next = pPre;        pPre = pCur;        if (pNext == NULL)        {            return pCur;        }        pCur = pNext;    }    return pCur;}</code></pre><p>改进版：</p><pre><code>ListNode* reverseList(ListNode* head) {    ListNode* pPre = NULL;    ListNode* pCur = head;    ListNode* pNext =NULL;    while (pCur != NULL)    {        pNext = pCur-&gt;next;        pCur-&gt;next = pPre;        pPre = pCur;        pCur = pNext;    }    return pPre;}</code></pre><h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p><font color='red'>1.思路很简单就是指针交换确定好指针交换的顺序就行<br>2.改进版本的思路还是一样，只是减少了判断的次数，数据量大的时候时间节约比较明显，小数据量差距不大。</font><br><strong><em>纸上得来终觉浅，绝知此事要躬行</em></strong></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+            <tag> C++基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>leetcode腾讯精选练习之合并有序链表（二）</title>
+      <link href="/2020/01/13/leetcode-2/"/>
+      <url>/2020/01/13/leetcode-2/</url>
+      
+        <content type="html"><![CDATA[<h2 id="合并两个有序链表"><a href="#合并两个有序链表" class="headerlink" title="合并两个有序链表"></a>合并两个有序链表</h2><h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><blockquote><p>将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。<br>示例：<br>输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4<br>输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</p></blockquote><h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p><strong>*<font color='red'>鉴于上个题目两个数相加之和的总结，这次不在定义两个临时变量指向两个链表，直接遍历两个链表</font>*</strong><br><strong>1.定义一个带头结点的链表<br>2.遍历两个链表l1、l2,比较两个链表当前结点的值的大小，小结点直接插入结果链表，同时向后移动该链表，循环此过程直到其中一个链表为NULL结束。<br>3.将不为NULL的链表插入到结果链表上</strong></p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {    ListNode res(-1);    ListNode* pRes = &amp;res;    while (l1 != NULL &amp;&amp; l2 != NULL)    {        if (l1-&gt;val &gt; l2-&gt;val)        {            pRes-&gt;next = l2;            l2 = l2-&gt;next;        }        else {            pRes-&gt;next = l1;            l1 = l1-&gt;next;        }        pRes = pRes-&gt;next;    }    if (l1 == NULL)    {        pRes-&gt;next = l2;    }    if (l2 == NULL)    {        pRes-&gt;next = l1;    }    return res.next;}</code></pre><h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p><font color='red'>有了上一道题目优化经验，就可以直接省去一些思考的中间环节，直接写出一次性满意的代码。<br></font></p><h2 id="合并K个排序链表"><a href="#合并K个排序链表" class="headerlink" title="合并K个排序链表"></a>合并K个排序链表</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><blockquote><p>合并 k 个排序链表，返回合并后的排序链表。请分析和描述算法的复杂度。<br>示例:<br>输入:<br>[<br>  1-&gt;4-&gt;5,<br>  1-&gt;3-&gt;4,<br>  2-&gt;6<br>]<br>输出: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5-&gt;6</p></blockquote><h3 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a>思路：</h3><p>1.合并K个链表就是选择两个先合并成一个链表再将合成后的链表与剩余的链表一一合并得出最终的结果<br>2.合并两个链表直接调用上到题目完成的函数。</p><h3 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h3><p>常规思路：  </p><pre><code>ListNode* mergeKLists(vector&lt;ListNode*&gt;&amp; lists) {    ListNode res(-1);    ListNode* pRes = &amp;res;    for (size_t i = 0; i &lt; lists.size(); i++)    {        pRes-&gt;next = mergeTwoLists(lists[i], pRes-&gt;next);    }    return res.next;}</code></pre><p>递归思路：</p><pre><code>ListNode* mergeKLists(vector&lt;ListNode*&gt;&amp; lists) {    int size = lists.size();    if (size == 0)     {        return NULL;    }    if (size == 1)     {         return lists[0];     }    for (int i = 0; i &lt; size / 2; i++)    {        lists[i] = mergeTwoLists(lists[i], lists[size - i - 1]);        lists.pop_back();    }    ListNode res(-1);    res.next = mergeKLists(lists);    return res.next;}</code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><font color='red'>1.常规思路就是将每一个链表逐一合并。<br>2.递归思路是将链表两两分成一组进行合并，最终将所有的分组再次进行两两合并，直到合并为一个链表为止，这就是递归分治的思路<br>3.对比两种思路：递归思路减少了合并的次数。<br></font></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+            <tag> C++基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>leetcode腾讯精选练习之两数相加（一）</title>
+      <link href="/2020/01/12/leetcode-1/"/>
+      <url>/2020/01/12/leetcode-1/</url>
+      
+        <content type="html"><![CDATA[<h2 id="1-两数相加"><a href="#1-两数相加" class="headerlink" title="1.两数相加"></a>1.两数相加</h2><h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><blockquote><p>给出两个非空的链表用来表示两个非负的整数。其中，它们各自的位数是按照逆序的方式存储的，并且它们的每个节点只能存储一位数字。如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。</p></blockquote><blockquote><p>示例：<br>输入：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>输出：7 -&gt; 0 -&gt; 8<br>原因：342 + 465 = 807</p></blockquote><h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p><strong>1.定义一个带头结点的链表同时定义一个指针指向该结点<br>2.定义两个指针分别指向两个链表的头结点<br>3.定义一个int的进位标志c<br>4.循环遍历两个链表对应结点的值相加然后和10取余获取当前结点的值，做除法运算获取是否需要近卫，结果链表采用尾插法保证顺序<br>5.遍历结束后，判断最后一位相加的结果是否有进位，如果进位标志大于0说明有进位在插入一个进位结点</strong></p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><p>第一版：</p><pre><code>ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {    ListNode res(-1);    ListNode* p1 = l1;    ListNode* p2 = l2;    ListNode* pRes = &amp;res;    int c = 0;    while (p1 != NULL || p2 != NULL)    {        int pA = p1 == NULL ? 0 : p1-&gt;val;        int pB = p2 == NULL ? 0 : p2-&gt;val;        int tmp = pA + pB + c;        c = tmp / 10;        pRes-&gt;next = new ListNode(tmp % 10);        pRes = pRes-&gt;next;        p1 = p1 == NULL ? NULL : p1-&gt;next;        p2 = p2 == NULL ? NULL : p2-&gt;next;    }    if (c &gt; 0)    {        pRes-&gt;next = new ListNode(c);    }    return res.next;}</code></pre><p>第二版：</p><pre><code>ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {    ListNode res(-1);    ListNode* pRes = &amp;res;    int c = 0;    while (l1 != NULL || l2 != NULL)    {        int pA = l1 == NULL ? 0 : l1-&gt;val;        int pB = l2 == NULL ? 0 : l2-&gt;val;        int tmp = pA + pB + c;        c = tmp / 10;        pRes-&gt;next = new ListNode(tmp % 10);        pRes = pRes-&gt;next;        l1 = l1 == NULL ? NULL : l1-&gt;next;        l2 = l2 == NULL ? NULL : l2-&gt;next;    }    if (c &gt; 0)    {        pRes-&gt;next = new ListNode(c);    }    return res.next;} </code></pre><p>终版：</p><pre><code>ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {    ListNode res(-1);    ListNode* pRes = &amp;res;    int c = 0;    while (l1 != NULL || l2 != NULL)    {        int tmp = c;        if (l1 !=NULL)        {            tmp += l1-&gt;val;            l1 = l1-&gt;next;        }        if (l2 != NULL)        {            tmp += l2-&gt;val;            l2 = l2-&gt;next;        }        c = tmp / 10;        pRes-&gt;next = new ListNode(tmp % 10);        pRes = pRes-&gt;next;    }    if (c &gt; 0)    {        pRes-&gt;next = new ListNode(c);    }    return res.next;}</code></pre><h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><font color='red'>1.第一版就是按照思路一步一步完成的。   <p>2.第二版去掉了临时变量，直接遍历两个链表，以减少内存开销  </p><p>3.终版是去掉了两次重复的判断，以减少时间开销    </p><p>4.结果的存储采用尾插法<br></font></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+            <tag> C++基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
