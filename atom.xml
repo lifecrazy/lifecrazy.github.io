@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lifecrazy.github.io/"/>
-  <updated>2020-01-18T01:30:19.399Z</updated>
+  <updated>2020-01-19T12:55:50.210Z</updated>
   <id>http://lifecrazy.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode_5</title>
+    <link href="http://lifecrazy.github.io/2020/01/19/leetcode-5/"/>
+    <id>http://lifecrazy.github.io/2020/01/19/leetcode-5/</id>
+    <published>2020-01-19T12:55:07.000Z</published>
+    <updated>2020-01-19T12:55:50.210Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;环形链表&quot;&gt;&lt;a href=&quot;#环形链表&quot; class=&quot;headerlink&quot; title=&quot;环形链表&quot;&gt;&lt;/a&gt;环形链表&lt;/h2&gt;&lt;h3 id=&quot;题目：&quot;&gt;&lt;a href=&quot;#题目：&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="leetcode" scheme="http://lifecrazy.github.io/tags/leetcode/"/>
+    
+      <category term="C++基础" scheme="http://lifecrazy.github.io/tags/C-%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
   
   <entry>
     <title>leetcode腾讯精选练习之旋转链表（四）</title>

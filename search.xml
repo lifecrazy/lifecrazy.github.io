@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>leetcode_5</title>
+      <link href="/2020/01/19/leetcode-5/"/>
+      <url>/2020/01/19/leetcode-5/</url>
+      
+        <content type="html"><![CDATA[<h2 id="环形链表"><a href="#环形链表" class="headerlink" title="环形链表"></a>环形链表</h2><h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>给定一个链表，判断链表中是否有环。<br>为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。<br>示例 1：<br>输入：head = [3,2,0,-4], pos = 1<br>输出：true<br>解释：链表中有一个环，其尾部连接到第二个节点。<br>示例 2：<br>输入：head = [1,2], pos = 0<br>输出：true<br>解释：链表中有一个环，其尾部连接到第一个节点。<br>示例 3：<br>输入：head = [1], pos = -1<br>输出：false<br>解释：链表中没有环。</p><h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p><strong>定义两个指针，一个指针每次移动一个结点，称作慢指针;另一个指针每次移动两个结点,称作快指针，两个指针同时开始移动，如果该链表有环，那么这两个指针会相遇，如果链表没有环，那么链表始终不会相遇。</strong></p><h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>bool hasCycle(ListNode *head) {    if (head == NULL || head-&gt;next == NULL) {        return false;    }    ListNode* pSlow = head;    ListNode* pFast = head;    while (pFast != NULL &amp;&amp; pFast-&gt;next != NULL) {        pSlow = pSlow-&gt;next;        pFast = pFast-&gt;next-&gt;next;        if (pSlow == pFast) {        return true;        }    }    return false;}</code></pre><h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p><font color='red'>1.首先遇到这个题目需要又快慢指针的思路<br>2.快慢指针相遇时，慢指针还没走完整个链表。这是结论。解释一下：第一种情况：慢指针到达环的入口结点时，快指针恰好也在。第二种情况：极端假设慢指针到达环的入口结点时，快指针假设就在入口结点的下一个结点，如果慢指针已经走完一圈，那么快指针已经走完两圈，那么他们在这期间内一定相遇过一次。所以有开头的结论。</font> </p><h2 id="环形链表-II"><a href="#环形链表-II" class="headerlink" title="环形链表 II"></a>环形链表 II</h2><h3 id="题目：-1"><a href="#题目：-1" class="headerlink" title="题目："></a>题目：</h3><p>给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。<br>为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。<br>说明：不允许修改给定的链表。<br>示例 1：<br>输入：head = [3,2,0,-4], pos = 1<br>输出：tail connects to node index 1<br>解释：链表中有一个环，其尾部连接到第二个节点。<br>示例 2：<br>输入：head = [1,2], pos = 0<br>输出：tail connects to node index 0<br>解释：链表中有一个环，其尾部连接到第一个节点。<br>示例 3：<br>输入：head = [1], pos = -1<br>输出：no cycle<br>解释：链表中没有环。  </p><h3 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a>思路：</h3><blockquote><p>根据数学公式快慢指针第一次相遇时慢指针移动的距离S=L+X,L为从开始结点到环的起始结点的距离，X为慢指针再环上移动的距离，快指针移动的距离等于2S=L+x+n<em>R,n</em>R表示快指针已经移动了n圈。<br>有这两个公式可以得出：nR = L + x,也就是说慢指针再移动L的距离可以到达环的起点，这个距离与开始结点到环的起点的距离相等<br><strong>1.定义快慢指针找到相遇点<br>2.在定义一个指针从开始结点开始移动直到与慢指针相遇，即为环的起始结点</strong></p></blockquote><h3 id="代码：-1"><a href="#代码：-1" class="headerlink" title="代码："></a>代码：</h3><pre><code>ListNode* detectCycle(ListNode* head) {    if (head == NULL || head-&gt;next == NULL) {        return NULL;    }    ListNode* pSlow = head;    ListNode* pFast = head;    bool hasCycle = false;    while (pFast != NULL &amp;&amp; pFast-&gt;next != NULL) {        pSlow = pSlow-&gt;next;        pFast = pFast-&gt;next-&gt;next;        if (pSlow == pFast) {            hasCycle = true;            break;        }    }    ListNode* pStart = head;    if (hasCycle)    {        while (pSlow != pStart)        {            pSlow = pSlow-&gt;next;            pStart = pStart-&gt;next;        }        return pStart;    }    return NULL;}</code></pre><h3 id="总结：-1"><a href="#总结：-1" class="headerlink" title="总结："></a>总结：</h3><p><font color='red'>除了用数学的方法定量计算出环的起始点，尚没有什么好的思路</font> </p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+            <tag> C++基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>leetcode腾讯精选练习之旋转链表（四）</title>
       <link href="/2020/01/16/leetcode-4/"/>
       <url>/2020/01/16/leetcode-4/</url>
