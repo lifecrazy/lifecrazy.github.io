@@ -433,14 +433,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    607
+                    905
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    4 分
                 </div>
                 
 
@@ -504,7 +504,60 @@
     }
 }
 return res;</code></pre><p>}</p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p><font color='red'>1.确定好要遍历的矩阵的左上角和右小角的坐标，即确定每一轮遍历的起点和终点。<br>2.确定每个过程坐标变换的规律。<br>3.该题不难，只是情况多了一些，按照要求一步一步分析，就不会有遗漏。</red></p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p><font color='red'>1.确定好要遍历的矩阵的左上角和右小角的坐标，即确定每一轮遍历的起点和终点。<br>2.确定每个过程坐标变换的规律。<br>3.该题不难，只是情况多了一些，按照要求一步一步分析，就不会有遗漏。</font></p>
+<h3 id="螺旋矩阵-II"><a href="#螺旋矩阵-II" class="headerlink" title="螺旋矩阵 II"></a>螺旋矩阵 II</h3><h4 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h4><p>给定一个正整数 n，生成一个包含 1 到 n2 所有元素，且元素按顺时针顺序螺旋排列的正方形矩阵。<br>示例:<br>输入: 3<br>输出:<br>&nbsp;&nbsp;&nbsp;&nbsp;[<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [ 1, 2, 3 ],<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [ 8, 9, 4 ],<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [ 7, 6, 5 ]<br>&nbsp;&nbsp;&nbsp;&nbsp;]</p>
+<h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p><strong>该题的遍历方法与上个题目一样</strong></p>
+<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><pre><code>vector&lt;vector&lt;int&gt;&gt; generateMatrix(int n) {
+    vector&lt;vector&lt;int&gt; &gt; res(n, vector&lt;int&gt;(n));
+    if (n == 0)
+    {
+        return res;
+    }
+    int beginX = 0;
+    int endX = n - 1;
+    int beginY = 0;
+    int endY = n - 1;
+    int index = 1;
+    while (true) {
+        //从左到右
+        for (int i = beginX; i &lt;= endX; i++)
+        {
+            res[beginY][i] = index++;
+        }
+        if (++beginY &gt; endY)
+        {
+            break;
+        }
+        //从上到下
+        for (int i = beginY; i &lt;= endY; ++i) {
+            res[i][endX] = index++;
+        }
+        if (beginX &gt; --endX)
+        {
+            break;
+        }
+        // 从右到左
+        for (int i = endX; i &gt;= beginX; --i)
+        {
+            res[endY][i] = index++;
+        }
+        if (beginY &gt; --endY)
+        {
+            break;
+        }
+        // 从下往上
+        for (int i = endY; i &gt;= beginY; --i)
+        {
+            res[i][beginX] = index++;
+        }
+        if (++beginX &gt; endX)
+        {
+            break;
+        }
+    }
+    return res;
+}</code></pre><h4 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h4><p><font color='red'>偷了个懒，从上个题目直接拷贝过来，修改一下遍历操作，这个题目就完成了。</p>
+<p>  万变不离其宗，掌握了方法，题目都是一样的</font></p>
 
             </div>
             <hr/>
@@ -892,7 +945,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">4.9k</span>&nbsp;字
+                class="white-color">5.2k</span>&nbsp;字
             
             
             
