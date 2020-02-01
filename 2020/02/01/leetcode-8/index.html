@@ -492,19 +492,19 @@
         if (beginY &gt; --endY)
         {
         break;
+        }
+        // 从下往上
+        for (int i = endY; i &gt;= beginY; --i)
+        {
+            res.push_back(matrix[i][beginX]);
+        }
+        if (++beginX &gt; endX)
+        {
+            break;
+        }
     }
-    // 从下往上
-    for (int i = endY; i &gt;= beginY; --i)
-    {
-        res.push_back(matrix[i][beginX]);
-    }
-    if (++beginX &gt; endX)
-    {
-        break;
-    }
-}
-return res;</code></pre><p>}</p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p><font color='red'>1.确定好要遍历的矩阵的左上角和右小角的坐标，即确定每一轮遍历的起点和终点。<br>2.确定每个过程坐标变换的规律。<br>3.该题不难，只是情况多了一些，按照要求一步一步分析，就不会有遗漏。</font></p>
+    return res;
+}</code></pre><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p><font color='red'>1.确定好要遍历的矩阵的左上角和右小角的坐标，即确定每一轮遍历的起点和终点。<br>2.确定每个过程坐标变换的规律。<br>3.该题不难，只是情况多了一些，按照要求一步一步分析，就不会有遗漏。</font></p>
 <h3 id="螺旋矩阵-II"><a href="#螺旋矩阵-II" class="headerlink" title="螺旋矩阵 II"></a>螺旋矩阵 II</h3><h4 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h4><p>给定一个正整数 n，生成一个包含 1 到 n2 所有元素，且元素按顺时针顺序螺旋排列的正方形矩阵。<br>示例:<br>输入: 3<br>输出:<br>&nbsp;&nbsp;&nbsp;&nbsp;[<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [ 1, 2, 3 ],<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [ 8, 9, 4 ],<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [ 7, 6, 5 ]<br>&nbsp;&nbsp;&nbsp;&nbsp;]</p>
 <h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p><strong>该题的遍历方法与上个题目一样</strong></p>
 <h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><pre><code>vector&lt;vector&lt;int&gt;&gt; generateMatrix(int n) {
