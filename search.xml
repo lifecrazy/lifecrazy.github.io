@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>leetcode腾讯精选练习之最长公共前缀（九）</title>
+      <link href="/2020/02/05/leetcode-9/"/>
+      <url>/2020/02/05/leetcode-9/</url>
+      
+        <content type="html"><![CDATA[<h3 id="最长公共前缀"><a href="#最长公共前缀" class="headerlink" title="最长公共前缀"></a>最长公共前缀</h3><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p>编写一个函数来查找字符串数组中的最长公共前缀。<br>如果不存在公共前缀，返回空字符串 “”。<br>示例 1:<br>输入: [“flower”,”flow”,”flight”]<br>输出: “fl”<br>示例 2:<br>输入: [“dog”,”racecar”,”car”]<br>输出: “”<br>解释: 输入不存在公共前缀。<br>说明:<br>所有输入只包含小写字母 a-z 。</p><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p><font color='red'>思路有两种：</font>  </p><blockquote><p>第一种:纵向扫描：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>1.第一个字符串与余下的所有字符串逐个比较。首先，找出第一个字符串与第二个字符串的最长公共前缀；然后让这个公共前缀和第三个字符串比较找出它们的公共前缀，依次直至遍历完所有的字符串。</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>2.第一个字符串与第二个字符串从头开始比较直到遇到不相同的字符为止，并记录最后一个相同的字符的索引right,然后第一个字符串与第三个字符串从头开始遍历时，如果遍历至索引right处还没遇到不同的字符，则停止遍历，从0到right的字符串即为这三个字符串的最长公共前缀，如果没有遍历至索引right处，就有不同的字符，则更新right的值，直至遍历完所有的字符串。</strong><br>第二种：横向扫描：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>1.同时遍历所有的字符串的第i个字符是否与第一个字符串的第i个字符是否相同，如果出现不相同，那么最长公共前缀即到上一个字符为止。</strong></p></blockquote><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><p>纵向扫描:  </p><pre><code>string longestCommonPrefix(vector&lt;string&gt;&amp; strs) {    if(strs.size() &lt;= 0)    {        return &quot;&quot;;    }    int right = strs[0].length();    for(int i = 1;i &lt; strs.size();i++)    {        for(int j = 0; j &lt; right  ; j++)        {            if(strs[0][j] != strs[i][j])            {                right = j;                break;            }        }    }    return strs[0].substr(0,right);}</code></pre><p>横向扫描:</p><pre><code>string longestCommonPrefix(vector&lt;string&gt;&amp; strs) {    if(strs.size() &lt;= 0)    {        return &quot;&quot;;    }    int right = strs[0].length();    for(int i = 0 ; i &lt; right; i++)    {        for(int j = 1 ; j &lt; strs.size(); j++)        {            if(strs[j][i] != strs[0][i])            {                right = i;                break;            }        }    }    return strs[0].substr(0,right);}</code></pre><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p><font color='red'>正常思路一般都会是先找出两个字符串的最长公共前缀，在用这个公共前缀和余下的字符串逐一寻找共同的前缀。<br>横向的思维是在网上看的，需要经常练习。拓宽思路，加油。</font></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+            <tag> C++基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>leetcode腾讯精选练习之螺旋矩阵（八）</title>
       <link href="/2020/02/01/leetcode-8/"/>
       <url>/2020/02/01/leetcode-8/</url>
