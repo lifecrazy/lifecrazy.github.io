@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="leetcode腾讯精选练习之最长公共前缀（九）, 一蓑烟雨">
-    <meta name="description" content="最长公共前缀题目编写一个函数来查找字符串数组中的最长公共前缀。如果不存在公共前缀，返回空字符串 “”。示例 1:输入: [“flower”,”flow”,”flight”]输出: “fl”示例 2:输入: [“dog”,”racecar”,">
+    <meta name="keywords" content="leetcode腾讯精选练习之除自身以外数组的乘积（十）, 一蓑烟雨">
+    <meta name="description" content="最长公共前缀题目给定长度为 n 的整数数组 nums，其中 n &amp;gt; 1，返回输出数组 output ，其中 output[i] 等于 nums 中除 nums[i] 之外其余各元素的乘积。示例:输入: [1,2,3,4]输出: [24">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>leetcode腾讯精选练习之最长公共前缀（九） | 一蓑烟雨</title>
+    <title>leetcode腾讯精选练习之除自身以外数组的乘积（十） | 一蓑烟雨</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -282,12 +282,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">leetcode腾讯精选练习之最长公共前缀（九）</h1>
+                    <h1 class="description center-align post-title">leetcode腾讯精选练习之除自身以外数组的乘积（十）</h1>
                 </div>
             </div>
         </div>
@@ -424,7 +424,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-05
+                    2020-02-06
                 </div>
                 
 
@@ -433,14 +433,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    621
+                    707
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    3 分
                 </div>
                 
 
@@ -456,51 +456,143 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="最长公共前缀"><a href="#最长公共前缀" class="headerlink" title="最长公共前缀"></a>最长公共前缀</h3><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p>编写一个函数来查找字符串数组中的最长公共前缀。<br>如果不存在公共前缀，返回空字符串 “”。<br>示例 1:<br>输入: [“flower”,”flow”,”flight”]<br>输出: “fl”<br>示例 2:<br>输入: [“dog”,”racecar”,”car”]<br>输出: “”<br>解释: 输入不存在公共前缀。<br>说明:<br>所有输入只包含小写字母 a-z 。</p>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p><font color='red'>思路有两种：</font>  </p>
-<blockquote>
-<p>第一种:纵向扫描：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>1.第一个字符串与余下的所有字符串逐个比较。首先，找出第一个字符串与第二个字符串的最长公共前缀；然后让这个公共前缀和第三个字符串比较找出它们的公共前缀，依次直至遍历完所有的字符串。</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>2.第一个字符串与第二个字符串从头开始比较直到遇到不相同的字符为止，并记录最后一个相同的字符的索引right,然后第一个字符串与第三个字符串从头开始遍历时，如果遍历至索引right处还没遇到不同的字符，则停止遍历，从0到right的字符串即为这三个字符串的最长公共前缀，如果没有遍历至索引right处，就有不同的字符，则更新right的值，直至遍历完所有的字符串。</strong><br>第二种：横向扫描：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>1.同时遍历所有的字符串的第i个字符是否与第一个字符串的第i个字符是否相同，如果出现不相同，那么最长公共前缀即到上一个字符为止。</strong></p>
-</blockquote>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><p>纵向扫描:  </p>
-<pre><code>string longestCommonPrefix(vector&lt;string&gt;&amp; strs) {
-    if(strs.size() &lt;= 0)
+                <h3 id="最长公共前缀"><a href="#最长公共前缀" class="headerlink" title="最长公共前缀"></a>最长公共前缀</h3><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p>给定长度为 n 的整数数组 nums，其中 n &gt; 1，返回输出数组 output ，其中 output[i] 等于 nums 中除 nums[i] 之外其余各元素的乘积。<br>示例:<br>输入: [1,2,3,4]<br>输出: [24,12,8,6]<br>说明: 请不要使用除法，且在 O(n) 时间复杂度内完成此题。</p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p><font color='red'><strong>第一种思路O(n2):但是不符合题目要求</strong></font><br><strong>两层循环遍历，思路很简单不详细说了第一层遍历数组中中的每个数，第二层遍历求解除了本身之外的乘积。</strong><br><font color='red'><strong>第二种思路就是除法：也不符合题目要求</strong></font><br><strong>1.所有的数字相乘除去本身即可得到结果。<br>2.需要注意0的问题，如果有一个0，那么除了0那个为止之外的所有结果都是0，0位置处的结果是其他数字的乘积。如果有两个零，那么结果的所有值都是0。</strong><br><font color='red'><strong>第三种思路：</strong></font><br><strong>每个结果都是这个数左边的数字的乘积和右边的数字的乘积，然后在相乘的出来的。<br>所以先求出每个数字左遍的乘积，先后再求出右边的乘积，进行相乘即可得到结果。<br>举个例子：先列出数组[1,2,3,4]左边的数字的乘积如下所示：</strong>   </p>
+<table>
+<thead>
+<tr>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>6</td>
+</tr>
+</tbody></table>
+<p><strong>然后在列出所有数字右遍的数的乘积如下所示：</strong>  </p>
+<table>
+<thead>
+<tr>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>24</td>
+<td>12</td>
+<td>4</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p><strong>然后将左边数字和右边数字的乘积列在一起,最后一行显示结果如果下所示：</strong>  </p>
+<table>
+<thead>
+<tr>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>6</td>
+</tr>
+<tr>
+<td>24</td>
+<td>12</td>
+<td>4</td>
+<td>1</td>
+</tr>
+<tr>
+<td><font color='red'>24 </font></td>
+<td><font color='red'> 12</font></td>
+<td><font color='red'>8 </font></td>
+<td><font color='red'> 6</font></td>
+</tr>
+</tbody></table>
+<p><strong>将左边数字的乘积和右边数字的乘积相乘即可得到最终的结果。</strong> </p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><p>第一种思路：</p>
+<pre><code>vector&lt;int&gt; productExceptSelf(vector&lt;int&gt;&amp; nums) {
+    vector&lt;int&gt; res;
+    int sz = nums.size();
+    for (size_t i = 0; i &lt; sz; i++)
     {
-        return &quot;&quot;;
-    }
-    int right = strs[0].length();
-    for(int i = 1;i &lt; strs.size();i++)
-    {
-        for(int j = 0; j &lt; right  ; j++)
+        int mul = 1;
+        for (size_t j = 0; j &lt; sz; j++)
         {
-            if(strs[0][j] != strs[i][j])
+            if (i == j)
             {
-                right = j;
-                break;
+                continue;
             }
+            mul *= nums[j];
         }
+        res.push_back(mul);
+    }
+}</code></pre><p>第二种思路：</p>
+<pre><code>vector&lt;int&gt; productExceptSelf(vector&lt;int&gt;&amp; nums) {
+    vector&lt;int&gt; res;
+    int sz = nums.size();
+    int mul = 1;
+    int zeroIndex = -1;
+    int zeroNum = 0;
+    for (size_t i = 0; i &lt; sz; i++)
+    {
+        if (nums[i] != 0)
+        {
+            mul *= nums[i];
+        }
+        else 
+        {
+            zeroNum++;
+            if (zeroNum &gt; 1)
+            {
+                res.resize(sz, 0);
+                return res;
+            }
+            zeroIndex = i;
+        }
+    }
+    if (zeroNum != 0)
+    {
+        res.resize(sz, 0);
+        res[zeroIndex] = mul;
+    }
+    else 
+    {
+        for (size_t i = 0; i &lt; sz; i++)
+        {
+            res.push_back(mul / nums[i]);
+        }
+    }
+    return res;
+}</code></pre><p>第三种思路：</p>
+<pre><code>vector&lt;int&gt; productExceptSelf(vector&lt;int&gt;&amp; nums) {
+    int sz = nums.size();
+    vector&lt;int&gt; res(sz, 0);
 
+    int tmp = 1;
+    for (int i = 0; i &lt; sz; i++) {
+        res[i] = tmp;
+        tmp *= nums[i];
     }
-    return strs[0].substr(0,right);
-}</code></pre><p>横向扫描:</p>
-<pre><code>string longestCommonPrefix(vector&lt;string&gt;&amp; strs) {
-    if(strs.size() &lt;= 0)
-    {
-        return &quot;&quot;;
+
+    tmp = 1;
+    for (int i = sz - 1; i &gt;= 0; i--) {
+        res[i] *= tmp;
+        tmp *= nums[i];
     }
-    int right = strs[0].length();
-    for(int i = 0 ; i &lt; right; i++)
-    {
-        for(int j = 1 ; j &lt; strs.size(); j++)
-        {
-            if(strs[j][i] != strs[0][i])
-            {
-                right = i;
-                break;
-            }
-        }
-    }
-    return strs[0].substr(0,right);
-}</code></pre><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p><font color='red'>正常思路一般都会是先找出两个字符串的最长公共前缀，在用这个公共前缀和余下的字符串逐一寻找共同的前缀。<br>横向的思维是在网上看的，需要经常练习。拓宽思路，加油。</font></p>
+    return res;
+}</code></pre><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p><font color='red'>这个题目总容易想到的就是前两种方法，第三种题目要求的方法还是需要多想想</font></p>
 
             </div>
             <hr/>
@@ -526,7 +618,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://lifecrazy.github.io/2020/02/05/leetcode-9/">http://lifecrazy.github.io/2020/02/05/leetcode-9/</a>
+                    <a href="http://lifecrazy.github.io/2020/02/06/leetcode-10/">http://lifecrazy.github.io/2020/02/06/leetcode-10/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -610,9 +702,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/02/06/leetcode-10/">
                     <div class="card-image">
@@ -630,9 +723,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-06
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-06
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -641,6 +734,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -663,24 +757,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/01/leetcode-8/">
+                <a href="/2020/02/05/leetcode-9/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="leetcode腾讯精选练习之螺旋矩阵（八）">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="leetcode腾讯精选练习之最长公共前缀（九）">
                         
-                        <span class="card-title">leetcode腾讯精选练习之螺旋矩阵（八）</span>
+                        <span class="card-title">leetcode腾讯精选练习之最长公共前缀（九）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            螺旋矩阵题目给定一个包含 m x n 个元素的矩阵（m 行, n 列），请按照顺时针螺旋顺序，返回矩阵中的所有元素。示例 1:输入:&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+                            最长公共前缀题目编写一个函数来查找字符串数组中的最长公共前缀。如果不存在公共前缀，返回空字符串 “”。示例 1:输入: [“flower”,”flow”,”flight”]输出: “fl”示例 2:输入: [“dog”,”racecar”,
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-05
                             </span>
                         <span class="publish-author">
                             

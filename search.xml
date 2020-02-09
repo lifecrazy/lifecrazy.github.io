@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>leetcode腾讯精选练习之除自身以外数组的乘积（十）</title>
+      <link href="/2020/02/06/leetcode-10/"/>
+      <url>/2020/02/06/leetcode-10/</url>
+      
+        <content type="html"><![CDATA[<h3 id="最长公共前缀"><a href="#最长公共前缀" class="headerlink" title="最长公共前缀"></a>最长公共前缀</h3><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p>给定长度为 n 的整数数组 nums，其中 n &gt; 1，返回输出数组 output ，其中 output[i] 等于 nums 中除 nums[i] 之外其余各元素的乘积。<br>示例:<br>输入: [1,2,3,4]<br>输出: [24,12,8,6]<br>说明: 请不要使用除法，且在 O(n) 时间复杂度内完成此题。</p><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p><font color='red'><strong>第一种思路O(n2):但是不符合题目要求</strong></font><br><strong>两层循环遍历，思路很简单不详细说了第一层遍历数组中中的每个数，第二层遍历求解除了本身之外的乘积。</strong><br><font color='red'><strong>第二种思路就是除法：也不符合题目要求</strong></font><br><strong>1.所有的数字相乘除去本身即可得到结果。<br>2.需要注意0的问题，如果有一个0，那么除了0那个为止之外的所有结果都是0，0位置处的结果是其他数字的乘积。如果有两个零，那么结果的所有值都是0。</strong><br><font color='red'><strong>第三种思路：</strong></font><br><strong>每个结果都是这个数左边的数字的乘积和右边的数字的乘积，然后在相乘的出来的。<br>所以先求出每个数字左遍的乘积，先后再求出右边的乘积，进行相乘即可得到结果。<br>举个例子：先列出数组[1,2,3,4]左边的数字的乘积如下所示：</strong>   </p><table><thead><tr><th>1</th><th>2</th><th>3</th><th>4</th></tr></thead><tbody><tr><td>1</td><td>1</td><td>2</td><td>6</td></tr></tbody></table><p><strong>然后在列出所有数字右遍的数的乘积如下所示：</strong>  </p><table><thead><tr><th>1</th><th>2</th><th>3</th><th>4</th></tr></thead><tbody><tr><td>24</td><td>12</td><td>4</td><td>1</td></tr></tbody></table><p><strong>然后将左边数字和右边数字的乘积列在一起,最后一行显示结果如果下所示：</strong>  </p><table><thead><tr><th>1</th><th>2</th><th>3</th><th>4</th></tr></thead><tbody><tr><td>1</td><td>1</td><td>2</td><td>6</td></tr><tr><td>24</td><td>12</td><td>4</td><td>1</td></tr><tr><td><font color='red'>24 </font></td><td><font color='red'> 12</font></td><td><font color='red'>8 </font></td><td><font color='red'> 6</font></td></tr></tbody></table><p><strong>将左边数字的乘积和右边数字的乘积相乘即可得到最终的结果。</strong> </p><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><p>第一种思路：</p><pre><code>vector&lt;int&gt; productExceptSelf(vector&lt;int&gt;&amp; nums) {    vector&lt;int&gt; res;    int sz = nums.size();    for (size_t i = 0; i &lt; sz; i++)    {        int mul = 1;        for (size_t j = 0; j &lt; sz; j++)        {            if (i == j)            {                continue;            }            mul *= nums[j];        }        res.push_back(mul);    }}</code></pre><p>第二种思路：</p><pre><code>vector&lt;int&gt; productExceptSelf(vector&lt;int&gt;&amp; nums) {    vector&lt;int&gt; res;    int sz = nums.size();    int mul = 1;    int zeroIndex = -1;    int zeroNum = 0;    for (size_t i = 0; i &lt; sz; i++)    {        if (nums[i] != 0)        {            mul *= nums[i];        }        else         {            zeroNum++;            if (zeroNum &gt; 1)            {                res.resize(sz, 0);                return res;            }            zeroIndex = i;        }    }    if (zeroNum != 0)    {        res.resize(sz, 0);        res[zeroIndex] = mul;    }    else     {        for (size_t i = 0; i &lt; sz; i++)        {            res.push_back(mul / nums[i]);        }    }    return res;}</code></pre><p>第三种思路：</p><pre><code>vector&lt;int&gt; productExceptSelf(vector&lt;int&gt;&amp; nums) {    int sz = nums.size();    vector&lt;int&gt; res(sz, 0);    int tmp = 1;    for (int i = 0; i &lt; sz; i++) {        res[i] = tmp;        tmp *= nums[i];    }    tmp = 1;    for (int i = sz - 1; i &gt;= 0; i--) {        res[i] *= tmp;        tmp *= nums[i];    }    return res;}</code></pre><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p><font color='red'>这个题目总容易想到的就是前两种方法，第三种题目要求的方法还是需要多想想</font></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+            <tag> C++基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>leetcode腾讯精选练习之最长公共前缀（九）</title>
       <link href="/2020/02/05/leetcode-9/"/>
       <url>/2020/02/05/leetcode-9/</url>
