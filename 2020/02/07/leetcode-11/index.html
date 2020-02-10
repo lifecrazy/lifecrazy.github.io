@@ -4,9 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="leetcode腾讯精选练习之链表逆置（三）, 一蓑烟雨">
-    <meta name="description" content="反转单链表题目：反转一个单链表。示例:输入: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5-&amp;gt;NULL输出: 5-&amp;gt;4-&amp;gt;3-&amp;gt;2-&amp;gt;1-&amp;gt;NULL
-思路：1.定义一个结点指针pCur指向当前链表,">
+    <meta name="keywords" content="leetcode腾讯精选练习之反转字符串（十一）, 一蓑烟雨">
+    <meta name="description" content="反转字符串题目编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 char[] 的形式给出。不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用 O(1) 的额外空间解决这一问题。你可以假设数组中的所有字符都是 AS">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>leetcode腾讯精选练习之链表逆置（三） | 一蓑烟雨</title>
+    <title>leetcode腾讯精选练习之反转字符串（十一） | 一蓑烟雨</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -283,12 +282,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">leetcode腾讯精选练习之链表逆置（三）</h1>
+                    <h1 class="description center-align post-title">leetcode腾讯精选练习之反转字符串（十一）</h1>
                 </div>
             </div>
         </div>
@@ -425,7 +424,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-01-14
+                    2020-02-07
                 </div>
                 
 
@@ -434,14 +433,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    351
+                    752
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -457,38 +456,69 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="反转单链表"><a href="#反转单链表" class="headerlink" title="反转单链表"></a>反转单链表</h2><h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><p>反转一个单链表。<br>示例:<br>输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL<br>输出: 5-&gt;4-&gt;3-&gt;2-&gt;1-&gt;NULL</p>
-<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p><strong>1.定义一个结点指针pCur指向当前链表,再定义一个指针pPre指向前一个结点,初始化为NULL。<br>2.循环遍历该链表，定义一个临时指针pNext指向当前链表的下一个结点,然后断开当前结点和下一个结点的指针关系，让当前结点的指针pCur的next指向pPre,即完成当前结点的反转。然后前移pPre指针和pCur指针，循环顺序执行该操作。<br>3.当临时指针pNext为NULL的时候说明pCur指针已经走到该链表的最后一个结点</strong></p>
-<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><pre><code>ListNode* reverseList(ListNode* head) {
-    ListNode* pPre = NULL;
-    ListNode* pCur = head;
-    while (pCur != NULL)
+                <h3 id="反转字符串"><a href="#反转字符串" class="headerlink" title="反转字符串"></a>反转字符串</h3><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p>编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 char[] 的形式给出。<br>不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用 O(1) 的额外空间解决这一问题。<br>你可以假设数组中的所有字符都是 ASCII 码表中的可打印字符。<br>示例 1：<br>输入：[“h”,”e”,”l”,”l”,”o”]<br>输出：[“o”,”l”,”l”,”e”,”h”]<br>示例 2：<br>输入：[“H”,”a”,”n”,”n”,”a”,”h”]<br>输出：[“h”,”a”,”n”,”n”,”a”,”H”]  </p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p><strong>非常简单，定义一个临时变量，交换第一个和最后一个，第二个和倒数第二个，直至交换完毕。</strong></p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre><code>void reverseString(vector&lt;char&gt;&amp; s) {
+    int sz = s.size();
+    for (size_t i = 0; i &lt; sz /2; i++)
     {
-        ListNode* pNext = pCur-&gt;next;
-        pCur-&gt;next = pPre;
-        pPre = pCur;
-        if (pNext == NULL)
+        char tmp = s[i];
+        s[i] = s[sz - 1 - i];
+        s[sz - i - 1] = tmp;
+    }
+}</code></pre><h3 id="反转字符串-II"><a href="#反转字符串-II" class="headerlink" title="反转字符串 II"></a>反转字符串 II</h3><h4 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h4><p>给定一个字符串和一个整数 k，你需要对从字符串开头算起的每个 2k 个字符的前k个字符进行反转。如果剩余少于 k 个字符，则将剩余的所有全部反转。如果有小于 2k 但大于或等于 k 个字符，则反转前 k 个字符，并将剩余的字符保持原样。<br>示例:<br>输入: s = “abcdefg”, k = 2<br>输出: “bacdfeg”<br>要求:<br>该字符串只包含小写的英文字母。<br>给定字符串的长度和 k 在[1, 10000]范围内。 </p>
+<h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p><strong>先将k个字符反转，然后再隔k个字符，再反转k个字符，直至结束。<br>1.每次移动2k个字符，并将前k个字符进行反转。<br>2.到达末尾是判断i+k和字符串的长度sz，选择较小的。</strong></p>
+<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><pre><code>string reverseStr(string s, int k) {
+    int sz = s.size();
+    int start = 0;
+    int end = 0;
+    for (size_t i = 0; i &lt; sz; i += 2 * k)
+    {
+        start = i;
+        end = i + k &gt; sz ? sz : i + k;
+        while (start &lt; end)
         {
-            return pCur;
+            char c = s[start];
+            s[start] = s[end - 1];
+            s[end - 1] = c;
+            start++;
+            end--;
         }
-        pCur = pNext;
     }
-    return pCur;
-}</code></pre><p>改进版：</p>
-<pre><code>ListNode* reverseList(ListNode* head) {
-    ListNode* pPre = NULL;
-    ListNode* pCur = head;
-    ListNode* pNext =NULL;
-    while (pCur != NULL)
+    return s;
+}</code></pre><h3 id="反转字符串中的单词-III"><a href="#反转字符串中的单词-III" class="headerlink" title="反转字符串中的单词 III"></a>反转字符串中的单词 III</h3><h4 id="题目-2"><a href="#题目-2" class="headerlink" title="题目"></a>题目</h4><p>给定一个字符串，你需要反转字符串中每个单词的字符顺序，同时仍保留空格和单词的初始顺序。<br>示例 1:<br>输入: “Let’s take LeetCode contest”<br>输出: “s’teL ekat edoCteeL tsetnoc”<br>注意：在字符串中，每个单词由单个空格分隔，并且字符串中不会有任何额外的空格。  </p>
+<h4 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h4><p><strong>1.遍历字符串，遇到空格时，反转前边的那个单词<br>2.最后一个单词，在字符串遍历完毕之后再反转。<br>3.遍历的过程中记录当前单词的结尾索引和下一个单词的开始索引。</strong></p>
+<h4 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h4><pre><code>string reverseWords(string s) {
+    int len = s.length();
+    int start = 0;
+    int end = 0;
+    for (size_t i = 0; i &lt; len; i++)
     {
-        pNext = pCur-&gt;next;
-        pCur-&gt;next = pPre;
-        pPre = pCur;
-        pCur = pNext;
+        if (s[i] == &apos; &apos;)
+        {
+            end = i - 1;
+            while (start &lt;= end)
+            {
+                char c = s[start];
+                s[start] = s[end];
+                s[end] = c;
+                start++;
+                end--;
+            }
+            start = i + 1;
+        }
     }
-    return pPre;
-}</code></pre><h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p><font color='red'>1.思路很简单就是指针交换确定好指针交换的顺序就行<br>2.改进版本的思路还是一样，只是减少了判断的次数，数据量大的时候时间节约比较明显，小数据量差距不大。</font><br><strong><em>纸上得来终觉浅，绝知此事要躬行</em></strong></p>
-
+    end = len - 1;
+    while (start &lt;= end)
+    {
+        char c = s[start];
+        s[start] = s[end];
+        s[end] = c;
+        start++;
+        end--;
+    }
+    return s;
+}</code></pre><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>
             </div>
             <hr/>
 
@@ -513,7 +543,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://lifecrazy.github.io/2020/01/14/leetcode-3/">http://lifecrazy.github.io/2020/01/14/leetcode-3/</a>
+                    <a href="http://lifecrazy.github.io/2020/02/07/leetcode-11/">http://lifecrazy.github.io/2020/02/07/leetcode-11/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -597,29 +627,30 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/01/16/leetcode-4/">
+                <a href="/2020/02/07/leetcode-11/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="leetcode腾讯精选练习之旋转链表（四）">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="leetcode腾讯精选练习之反转字符串（十一）">
                         
-                        <span class="card-title">leetcode腾讯精选练习之旋转链表（四）</span>
+                        <span class="card-title">leetcode腾讯精选练习之反转字符串（十一）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            旋转链表题目：给定一个链表，旋转链表，将链表每个节点向右移动 k 个位置，其中 k 是非负数。示例 1:输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, k = 2输出: 4-&gt;5-&gt;1-&gt;2
+                            反转字符串题目编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 char[] 的形式给出。不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用 O(1) 的额外空间解决这一问题。你可以假设数组中的所有字符都是 AS
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-01-16
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-07
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -628,6 +659,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -650,25 +682,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/01/13/leetcode-2/">
+                <a href="/2020/02/06/leetcode-10/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="leetcode腾讯精选练习之合并有序链表（二）">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="leetcode腾讯精选练习之除自身以外数组的乘积（十）">
                         
-                        <span class="card-title">leetcode腾讯精选练习之合并有序链表（二）</span>
+                        <span class="card-title">leetcode腾讯精选练习之除自身以外数组的乘积（十）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            合并两个有序链表题目：
-将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。示例：输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4输出：1-&gt;1-&gt;2-&gt;3-&gt;4
+                            最长公共前缀题目给定长度为 n 的整数数组 nums，其中 n &gt; 1，返回输出数组 output ，其中 output[i] 等于 nums 中除 nums[i] 之外其余各元素的乘积。示例:输入: [1,2,3,4]输出: [24
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-06
                             </span>
                         <span class="publish-author">
                             
