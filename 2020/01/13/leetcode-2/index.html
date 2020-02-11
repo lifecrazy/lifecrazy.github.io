@@ -434,7 +434,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    657
+                    650
                 </div>
                 
 
@@ -517,9 +517,7 @@
         lists[i] = mergeTwoLists(lists[i], lists[size - i - 1]);
         lists.pop_back();
     }
-    ListNode res(-1);
-    res.next = mergeKLists(lists);
-    return res.next;
+    return mergeKLists(lists);
 }</code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><font color='red'>1.常规思路就是将每一个链表逐一合并。<br>2.递归思路是将链表两两分成一组进行合并，最终将所有的分组再次进行两两合并，直到合并为一个链表为止，这就是递归分治的思路<br>3.对比两种思路：递归思路减少了合并的次数。<br></font></p>
 
             </div>
